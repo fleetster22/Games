@@ -7,10 +7,21 @@ export default class Game {
     this.gameHeight = gameHeight;
     this.gameWidth = gameWidth;
   }
-  start() {
-    let paddle = new Paddle(this);
-    let ball = new Ball(this);
 
-    new InputHandler(paddle);
+  start() {
+    this.paddle = new Paddle(this);
+    this.ball = new Ball(this);
+
+    this.gameObjects = [this.ball, this.paddle];
+
+    new InputHandler(this.paddle);
+  }
+
+  update(deltaTime) {
+    this.gameObjects.forEach((object) => object.update(deltaTime));
+  }
+
+  draw(ctx) {
+    this.gameObjects.forEach((object) => object.draw(ctx));
   }
 }
