@@ -20,6 +20,8 @@ export default class Ball {
     this.position.x += this.speed.x;
     this.position.y += this.speed.y;
 
+    // TODO break bricks
+
     // *  checks for left and right wall boundaries
     if (this.position.x + this.size > this.gameWidth || this.position.x < 0) {
       this.speed.x = -this.speed.x;
